@@ -4,16 +4,20 @@
 # @UpdateTime: 2021-09-15
 
 import logging
+import os
 
 from flask import Flask, render_template
 from flask_script import Manager, Server
-
-import sekiro_server
 
 logging.basicConfig(level=logging.INFO)
 app = Flask(__name__, template_folder="templates")
 manager = Manager(app)
 manager.add_command("runserver", Server("0.0.0.0", port=5000))
+
+
+def start_sekiro():
+    status = os.popen("cd /srv/sekiro && sh /srv/sekiro/sekiro_run.sh")
+    return status
 
 
 @app.route("/", methods=["GET"], strict_slashes=False)
@@ -22,9 +26,12 @@ def index():
 
 
 @app.route("/start", methods=["GET"], strict_slashes=False)
-def index():
-    sekiro_server.scheduler.start()
-    return render_template("index.html")
+def start():
+    try:
+        status = start_sekiro()
+        return {"code": "1", "msg": "sekiro服务启动成功", "status": status}
+    except:
+        return {"code": "0", "msg": "sekiro服务启动失败"}
 
 
 if __name__ == "__main__":

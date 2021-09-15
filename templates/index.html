@@ -2,9 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>sekiro</title>
+    <title>Sekiro服务</title>
 </head>
 <body>
-<h1>Hello World</h1>
+
+<h3>接口说明</h3>
+<p>
+    <span>
+        1. /start
+    </span><br><br>
+    <span>
+        启动sekiro服务
+    </span><br><br>
+    <span>
+        2. /business-demo/groupList
+    </span><br><br>
+    <span>
+        sekiro服务的连接列表
+    </span><br><br>
+    <span>
+        3. wss://sekiro.xxx.com/business-demo/register?group=test&clientId=xxx
+    </span><br><br>
+    <span>
+        客户端连接服务端
+    </span><br><br>
+    <span>
+        4. https://sekiro.xxx.com/business-demo/invoke?group=test&action=xxx&xxx=xxx
+    </span><br><br>
+    <span>
+        服务端调用客户端
+    </span><br><br>
+</p>
+
+<h3>Sekiro服务部署</h3>
+<p>
+    <span>
+        1. Sekiro服务端（新版），服务器开放端口：5620
+    </span><br><br>
+    <span>
+        https://sekiro.virjar.com/sekiro-doc/02_server_deploy/1.DemoServer.html.com/virjar/sekiro-server:latest
+    </span><br><br>
+    <span>
+        2. Sekiro服务端（旧版），服务器开放端口：5600-5603
+    </span><br><br>
+    <span>
+        docker run --restart=always -d -p 5600:5600 -p 5601:5601 -p 5602:5602 -p 5603:5603 --name sekiro-server registry.cn-beijing.aliyuncs.com/virjar/sekiro-server:latest
+    </span><br><br>
+</p>
+
 </body>
 </html>

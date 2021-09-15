@@ -16,8 +16,7 @@ manager.add_command("runserver", Server("0.0.0.0", port=5000))
 
 
 def start_sekiro():
-    status = os.popen("cd /srv/sekiro && sh /srv/sekiro/sekiro_run.sh")
-    return status
+    os.popen("cd /srv/sekiro && sh /srv/sekiro/sekiro_run.sh")
 
 
 @app.route("/", methods=["GET"], strict_slashes=False)
@@ -28,8 +27,8 @@ def index():
 @app.route("/start", methods=["GET"], strict_slashes=False)
 def start():
     try:
-        status = start_sekiro()
-        return {"code": "1", "msg": "sekiro服务启动成功", "status": status}
+        start_sekiro()
+        return {"code": "1", "msg": "sekiro服务启动成功"}
     except:
         return {"code": "0", "msg": "sekiro服务启动失败"}
 

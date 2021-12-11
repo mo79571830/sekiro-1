@@ -14,7 +14,7 @@ git clone https://github.com/guoxianru/sekiro.git
 # 切换项目根目录
 cd sekiro/
 # 切换虚拟环境
-workon python36_spider
+workon spider_py38
 # 加载uwsgi配置
 uwsgi --ini flaskuwsgi.ini
 # 重启nginx服务

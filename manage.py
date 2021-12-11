@@ -12,7 +12,7 @@ from flask_script import Manager, Server
 logging.basicConfig(level=logging.INFO)
 app = Flask(__name__, template_folder="templates")
 manager = Manager(app)
-manager.add_command("runserver", Server("0.0.0.0", port=5000))
+manager.add_command("runserver", Server("0.0.0.0", port=5588))
 
 
 def start_sekiro():
